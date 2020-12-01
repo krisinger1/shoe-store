@@ -8,23 +8,35 @@
     <fragment
         android:id="@+id/login_destination"
         android:name="com.udacity.shoestore.LoginFragment"
-        android:label="login_fragment">
+        android:label="Shoe Store Login">
         <action
             android:id="@+id/action_login_fragment_to_welcomeFragment"
-            app:destination="@id/welcome_destination" />
+            app:destination="@id/welcome_destination"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/welcome_destination"
         android:name="com.udacity.shoestore.WelcomeFragment"
-        android:label="welcome_fragment"
+        android:label="Welcome"
         tools:layout="@layout/welcome_fragment" >
         <action
             android:id="@+id/action_welcome_to_instructions"
-            app:destination="@id/instructions_destination" />
+            app:destination="@id/instructions_destination"
+            app:popUpTo="@id/login_destination" />
     </fragment>
     <fragment
         android:id="@+id/instructions_destination"
         android:name="com.udacity.shoestore.InstructionsFragment"
-        android:label="instructions_fragment"
-        tools:layout="@layout/instructions_fragment" />
+        android:label="Instructions"
+        tools:layout="@layout/instructions_fragment" >
+        <action
+            android:id="@+id/action_instructions_destination_to_shoe_list_destination"
+            app:destination="@id/shoe_list_destination"
+            app:popUpTo="@id/login_destination" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoe_list_destination"
+        android:name="com.udacity.shoestore.ShoeListFragment"
+        android:label="Shoe Inventory"
+        tools:layout="@layout/fragment_shoe_list" />
 </navigation>

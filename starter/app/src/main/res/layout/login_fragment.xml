@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
-
+    <!-- used LinearLayout since I just wanted a few vertically aligned views -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
+
 
         <TextView
             android:id="@+id/email_label"
@@ -20,8 +21,7 @@
             android:text="@string/email"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="149dp" />
+            android:textStyle="bold" />
 
 
         <EditText
@@ -39,6 +39,7 @@
             android:id="@+id/password_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
             android:layout_marginBottom="@dimen/margin_small"
             android:fontFamily="@font/comfortaa_bold"
             android:text="@string/password"
@@ -58,25 +59,13 @@
 
         <Button
             android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_wide"
-            android:background="@color/colorPrimary"
-            android:fontFamily="@font/comfortaa_bold"
-            android:padding="@dimen/padding_small"
-            android:text="Login with existing account"
-            android:textColor="@color/colorWhite" />
+            style="@style/button"
+            android:text="Login with existing account" />
 
         <Button
             android:id="@+id/new_login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_wide"
-            android:background="@color/colorPrimary"
-            android:fontFamily="@font/comfortaa_bold"
-            android:padding="@dimen/padding_small"
-            android:text="Create New Login"
-            android:textColor="@color/colorWhite" />
+            style="@style/button"
+            android:text="Create New Login" />
 
 
     </LinearLayout>

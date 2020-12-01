@@ -7,4 +7,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome_sentence">Welcome to the shoe store!</string>
+    <string name="welcome_details">View our inventory of shoes. Click button below to learn how to add a new shoe to the inventory.</string>
+    <string name="instructions">Click the button below to view the current inventory. You can use the + button on the inventory page to add a new shoe to the inventory.</string>
+    <string name="login">Login</string>
 </resources>

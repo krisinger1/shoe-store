@@ -10,33 +10,19 @@
 
         <!-- Using Linear Layout since layout is very simple with only a couple views -->
         <TextView
-            android:id="@+id/welcome_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_wide"
-            android:fontFamily="@font/comfortaa"
-            android:text="@string/welcome_sentence"
-            android:textAlignment="center"
-            android:textSize="24sp" />
+            android:id="@+id/welcome_title_text"
+            style="@style/title_text"
+            android:text="@string/welcome_sentence" />
+
+        <TextView
+            android:id="@+id/instructions_body_text"
+            style="@style/body_text"
+            android:text="@string/welcome_details" />
 
         <Button
             android:id="@+id/instructions_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_wide"
-            android:background="@color/colorPrimary"
-            android:fontFamily="@font/comfortaa_bold"
-            android:padding="@dimen/padding_small"
-            android:text="View Instructions"
-            android:textColor="@color/colorWhite" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/comfortaa"
-            android:text="another text view"
-            android:textAlignment="center" />
+            style="@style/button"
+            android:text="View Instructions"/>
 
     </LinearLayout>
 </layout>
