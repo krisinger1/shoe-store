@@ -30,7 +30,7 @@
         android:label="Instructions"
         tools:layout="@layout/instructions_fragment" >
         <action
-            android:id="@+id/action_instructions_destination_to_shoe_list_destination"
+            android:id="@+id/action_instructions_to_shoe_list"
             app:destination="@id/shoe_list_destination"
             app:popUpTo="@id/login_destination" />
     </fragment>
@@ -38,5 +38,15 @@
         android:id="@+id/shoe_list_destination"
         android:name="com.udacity.shoestore.ShoeListFragment"
         android:label="Shoe Inventory"
-        tools:layout="@layout/fragment_shoe_list" />
+        tools:layout="@layout/shoe_list_fragment" >
+        <action
+            android:id="@+id/action_shoe_list_to_shoe_detail"
+            app:destination="@id/shoe_detail_destination"
+            app:popUpTo="@id/shoe_list_destination" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoe_detail_destination"
+        android:name="com.udacity.shoestore.ShoeDetailFragment"
+        android:label="Add Shoe"
+        tools:layout="@layout/shoe_detail_fragment" />
 </navigation>

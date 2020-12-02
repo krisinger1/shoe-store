@@ -10,4 +10,6 @@
     <string name="welcome_details">View our inventory of shoes. Click button below to learn how to add a new shoe to the inventory.</string>
     <string name="instructions">Click the button below to view the current inventory. You can use the + button on the inventory page to add a new shoe to the inventory.</string>
     <string name="login">Login</string>
+    <string name="instructions_title">Instructions</string>
+    <string name="view_inventory">View Inventory</string>
 </resources>
