@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.ShoeBinding
 import com.udacity.shoestore.databinding.ShoeListFragmentBinding
 import com.udacity.shoestore.models.Shoe
@@ -32,6 +34,10 @@ class ShoeListFragment : Fragment() {
             container,
             false
         )
+
+        binding.addShoeFab.setOnClickListener {
+            findNavController().navigate(ShoeListFragmentDirections.actionShoeListToShoeDetail())
+        }
 
 //        var singleShoe = Shoe("cross trainer", 7.0, "Nike", "white athletic shoe" )
 //
