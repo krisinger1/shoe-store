@@ -91,7 +91,8 @@
             android:fontFamily="@font/comfortaa"
             android:inputType="textMultiLine|textNoSuggestions|text"
             android:text=""
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            />
 
         <Button
             android:id="@+id/add_shoe_button"
