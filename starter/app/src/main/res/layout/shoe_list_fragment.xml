@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="shoeListViewModel"
+            type="com.udacity.shoestore.ShoeListViewModel"/>
+    </data>
+
 <!-- using constraintLayout to allow for floating action button on top of ScrollView -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +26,7 @@
             android:backgroundTint="@color/colorAccent"
             android:foregroundTint="@color/colorWhite"
             android:src="@drawable/ic_add"
-            android:topLeftRadius="16dp"
+            android:onClick="@{()->shoeListViewModel.onGoToAddShoe()}"
             app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="@+id/shoe_list_scrollview"
             app:layout_constraintEnd_toEndOf="@+id/shoe_list_scrollview"
@@ -39,14 +45,11 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:context=".ShoeListFragment">
 
-
             <LinearLayout
                 android:id="@+id/shoe_list_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-
             </LinearLayout>
 
 

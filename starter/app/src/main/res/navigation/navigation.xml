@@ -50,7 +50,7 @@
         android:label="Add Shoe"
         tools:layout="@layout/shoe_detail_fragment" >
         <action
-            android:id="@+id/action_shoe_detail_destination_to_shoe_list_destination"
+            android:id="@+id/action_add_shoe_to_shoe_list"
             app:destination="@id/shoe_list_destination"
             app:popUpTo="@id/shoe_list_destination" />
     </fragment>
