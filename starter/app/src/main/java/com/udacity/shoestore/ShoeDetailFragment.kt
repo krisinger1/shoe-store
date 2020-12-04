@@ -1,15 +1,20 @@
 package com.udacity.shoestore
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.ShoeDetailFragmentBinding
+import timber.log.Timber
+import java.time.Duration
 
 class ShoeDetailFragment : Fragment() {
 
@@ -27,19 +32,35 @@ class ShoeDetailFragment : Fragment() {
 
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.shoe_detail_fragment, container, false)
+        binding.lifecycleOwner=this
+        binding.shoeListViewModel=viewModel
+
 
         binding.addShoeButton.setOnClickListener {
-            if (binding.shoeNameEditText.toString()!="") {
-                viewModel.addShoeToList(binding.shoeNameEditText.text.toString(),
+            // if a shoe has been entered, add to the list
+            Timber.i("name is: ${binding.shoeNameEditText.text.toString()}")
+            if (!binding.shoeNameEditText.text.isNullOrBlank()) {
+                viewModel.addShoeToList(
+                        binding.shoeNameEditText.text.toString(),
                         binding.shoeSizeEditText.text.toString().toDoubleOrNull() ?: 0.0,
                         binding.shoeBrandEditText.text.toString(),
                         binding.shoeDescriptionEditText.text.toString())
+                // then navigate back to the ShoeListFragment
+                findNavController().navigate(ShoeDetailFragmentDirections.actionAddShoeToShoeList())
+
+                //hide the keyboard
+                val imm= context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(view?.windowToken,0)
             }
-            findNavController().navigate(ShoeDetailFragmentDirections.actionAddShoeToShoeList())
+            else {
+                Toast.makeText(context, "PLease enter a shoe name", Toast.LENGTH_SHORT).show()
+
+            }
+
         }
 
        return binding.root
     }
 
-   //TODO close keyboard after input
+
 }

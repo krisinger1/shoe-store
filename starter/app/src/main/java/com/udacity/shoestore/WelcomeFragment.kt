@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.WelcomeFragmentBinding
-
+import timber.log.Timber
 
 
 class WelcomeFragment : Fragment() {
@@ -34,8 +35,12 @@ class WelcomeFragment : Fragment() {
             findNavController().navigate(WelcomeFragmentDirections.actionWelcomeToInstructions())
         }
 
+
+
+
         return binding.root
     }
+
 
 
 }

@@ -2,15 +2,15 @@ package com.udacity.shoestore
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.ShoeBinding
 import com.udacity.shoestore.databinding.ShoeListFragmentBinding
 import com.udacity.shoestore.models.Shoe
@@ -43,6 +43,10 @@ class ShoeListFragment : Fragment() {
         binding.shoeListViewModel=viewModel
         binding.lifecycleOwner=this
 
+//        if (activity is AppCompatActivity) {
+//            (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        }
+
         //observers
         // go to detail screen when button clicked
         viewModel.eventGoToAddShoe.observe(viewLifecycleOwner, Observer{ goToAdd ->
@@ -53,6 +57,7 @@ class ShoeListFragment : Fragment() {
         viewModel.shoeList.observe(viewLifecycleOwner, Observer{list->
             updateShoeList(inflater, list)
         })
+        setHasOptionsMenu(true)
 
         return binding.root
     }
@@ -90,6 +95,18 @@ class ShoeListFragment : Fragment() {
             binding.shoeListLinearLayout.addView(createShoeItem(inflater, thisShoe))
             Log.i("for", "adding view")
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.logout_menu, menu)
+
+        //super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //val navController = findNavController
+        return NavigationUI.onNavDestinationSelected(item,findNavController()) || super.onOptionsItemSelected(item)
+        //return super.onOptionsItemSelected(item)
     }
 
 }

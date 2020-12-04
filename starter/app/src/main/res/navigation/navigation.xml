@@ -22,7 +22,8 @@
         <action
             android:id="@+id/action_welcome_to_instructions"
             app:destination="@id/instructions_destination"
-            app:popUpTo="@id/login_destination" />
+            app:popUpTo="@id/login_destination"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/instructions_destination"
@@ -32,7 +33,8 @@
         <action
             android:id="@+id/action_instructions_to_shoe_list"
             app:destination="@id/shoe_list_destination"
-            app:popUpTo="@id/login_destination" />
+            app:popUpTo="@id/login_destination"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/shoe_list_destination"

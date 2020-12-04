@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -20,22 +21,32 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Timber.plant(Timber.DebugTree())
         val navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-        findViewById<Toolbar>(R.id.toolbar)
-            .setupWithNavController(navController, appBarConfiguration)
+        //val appBarConfiguration = AppBarConfiguration(navController.graph)
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.login_destination,R.id.welcome_destination, R.id.instructions_destination, R.id.shoe_list_destination))
+
+        findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, appBarConfiguration)
         setSupportActionBar(toolbar)
-        //findViewById<Toolbar>(R.id.toolbar).inflateMenu(R.menu.logout_menu)
-
+        NavigationUI.setupActionBarWithNavController(this, navController,appBarConfiguration)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.logout_menu, menu)
-        return true
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return NavigationUI.navigateUp(navController, AppBarConfiguration(navController.graph))
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-            val navController = findNavController(R.id.nav_host_fragment)
+ //   override fun onBackPressed() {
 
-            return NavigationUI.onNavDestinationSelected(item,navController) || super.onOptionsItemSelected(item)
-        }
+//        //val f : Fragment? = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+//
+//        if (f != null) {
+//            Timber.i("${f.id}")
+//        }
+//        if (f is WelcomeFragment){
+//            //do nothing
+//        }
+//        else {
+//            super.onBackPressed()
+  //      }
+ //   }
 }
