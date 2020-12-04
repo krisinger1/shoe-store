@@ -16,8 +16,6 @@ class WelcomeFragment : Fragment() {
 
     private lateinit var binding : WelcomeFragmentBinding
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,9 +32,6 @@ class WelcomeFragment : Fragment() {
         binding.instructionsButton.setOnClickListener {
             findNavController().navigate(WelcomeFragmentDirections.actionWelcomeToInstructions())
         }
-
-
-
 
         return binding.root
     }

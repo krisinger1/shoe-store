@@ -12,4 +12,13 @@
     <string name="instructions_title">Instructions</string>
     <string name="view_inventory">View Inventory</string>
     <string name="size_format">%.1f</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="login_with_existing_account">Login with Existing Account</string>
+    <string name="save_shoe">save shoe</string>
+    <string name="description">Description:</string>
+    <string name="brand">Brand:</string>
+    <string name="size">Size:</string>
+    <string name="name">Name:</string>
+    <string name="navigate_to_shoe_detail_screen">navigate to shoe detail screen</string>
+    <string name="view_instructions">View Instructions</string>
 </resources>

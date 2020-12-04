@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         Timber.plant(Timber.DebugTree())
         val navController = findNavController(R.id.nav_host_fragment)
         //val appBarConfiguration = AppBarConfiguration(navController.graph)
+        // set up so onboarding screens don't have up button
         val appBarConfiguration = AppBarConfiguration(setOf(R.id.login_destination,R.id.welcome_destination, R.id.instructions_destination, R.id.shoe_list_destination))
 
         findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, appBarConfiguration)
@@ -35,18 +36,4 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, AppBarConfiguration(navController.graph))
     }
 
- //   override fun onBackPressed() {
-
-//        //val f : Fragment? = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-//
-//        if (f != null) {
-//            Timber.i("${f.id}")
-//        }
-//        if (f is WelcomeFragment){
-//            //do nothing
-//        }
-//        else {
-//            super.onBackPressed()
-  //      }
- //   }
 }

@@ -27,27 +27,22 @@ class ShoeListViewModel : ViewModel(){
     init {
         Timber.i("in init block")
         _shoeList.value = mutableListOf(
-                Shoe("name1", 5.0, "Nike", "describe shoe 1"),
-                Shoe("name2", 6.0, "Addidas", "describe shoe 2"),
-                Shoe("name3", 7.0, "Champion", "describe shoe 3"),
-                Shoe("name4", 8.0, "Avia", "describe shoe 4"))
+                Shoe("Red Boot", 5.0, "Ugg", "Victoria Mini winter boots from Koolaburra by UGG."),
+                Shoe("Ines Winter Boot", 6.0, "Croft & Barrow", "Round toe and zipper closure."),
+                Shoe("Block Heel Ankle Boot", 7.0, "Journey", "Lace up front."))
 
         _eventGoToAddShoe.value = false
-
-        //_newShoe.value = Shoe("name",0.0,"brand","description")
-        Timber.i("new Shoe created: ${_newShoe.value}")
     }
 
 
     public fun onGoToAddShoe(){
-
         _eventGoToAddShoe.value=true
-        Timber.i("Add shoe?"+_eventGoToAddShoe.value)
     }
 
     public fun onGoToAddShoeComplete(){
         _eventGoToAddShoe.value=false
-
+        // replace newShoe with a blank Shoe so ready to get new data
+        _newShoe.value=null
     }
 
     public fun addShoeToList(name : String, size : Double=0.0, company:String ="", description: String = ""){
@@ -55,6 +50,5 @@ class ShoeListViewModel : ViewModel(){
         _newShoe.value=Shoe(name, size, company, description)
         // add shoe to list
         _shoeList.value?.add(_newShoe.value!!)
-        //
     }
 }

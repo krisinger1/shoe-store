@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.LoginFragmentBinding
@@ -29,18 +30,29 @@ class LoginFragment : Fragment(){
             false
         )
 
+        binding.lifecycleOwner=this
         viewModel=ViewModelProvider(this).get(LoginViewModel::class.java)
-
-        binding.loginButton.setOnClickListener{
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
-        }
-
-        binding.newLoginButton.setOnClickListener{
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
-        }
+        binding.loginViewModel=viewModel
 
 
+//        binding.loginButton.setOnClickListener{
+//            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+//        }
+//
+//        binding.newLoginButton.setOnClickListener{
+//            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+//        }
+
+        //observers
+        // go to welcome screen when login clicked
+        viewModel.isLoggedIn.observe(viewLifecycleOwner, Observer{ loggedIn ->
+            if (loggedIn) goToWelcome()
+        })
 
         return binding.root
+    }
+
+    private fun goToWelcome(){
+        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
     }
 }

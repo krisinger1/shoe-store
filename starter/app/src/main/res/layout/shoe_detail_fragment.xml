@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -8,102 +9,136 @@
             type="com.udacity.shoestore.ShoeListViewModel"/>
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         tools:context=".ShoeDetailFragment">
 
-        <TextView
-            android:id="@+id/shoe_name_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_wide"
-            android:fontFamily="@font/comfortaa_bold"
-            android:text="Shoe name:"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/shoe_name_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_extrawide"
-            android:layout_marginRight="@dimen/margin_extrawide"
-            android:ems="10"
-            android:fontFamily="@font/comfortaa"
-            android:inputType="text"
-            android:text="@{shoeListViewModel.newShoe.name}"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/shoe_brand_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_wide"
-            android:fontFamily="@font/comfortaa_bold"
-            android:text="Shoe brand:"
-            android:textSize="18sp" />
+        <Button
+            android:id="@+id/add_shoe_button"
+            style="@style/button"
+            android:layout_marginBottom="@dimen/margin_wide"
+            android:layout_marginTop="@dimen/margin_wide"
+            android:text="@string/save_shoe"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shoe_description_edit_text"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/shoe_brand_edit_text"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_extrawide"
-            android:layout_marginRight="@dimen/margin_extrawide"
+            android:layout_marginBottom="@dimen/margin_wide"
             android:ems="10"
             android:fontFamily="@font/comfortaa"
             android:inputType="textNoSuggestions|text"
             android:text="@{shoeListViewModel.newShoe.company}"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/shoe_size_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_wide"
-            android:fontFamily="@font/comfortaa_bold"
-            android:text="Shoe size:"
-            android:textSize="18sp" />
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/shoe_size_edit_text"
+            app:layout_constraintStart_toStartOf="@+id/shoe_size_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/shoe_name_edit_text" />
 
         <EditText
             android:id="@+id/shoe_size_edit_text"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_extrawide"
-            android:layout_marginRight="@dimen/margin_extrawide"
+            android:layout_marginBottom="@dimen/margin_wide"
             android:ems="10"
             android:fontFamily="@font/comfortaa"
             android:inputType="number"
             android:text="@{@string/size_format(shoeListViewModel.newShoe.size)}"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/shoe_description_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_wide"
-            android:fontFamily="@font/comfortaa_bold"
-            android:text="Shoe description:"
-            android:textSize="18sp" />
+            android:textAlignment="center"
+            android:selectAllOnFocus="true"
+            app:layout_constraintBottom_toTopOf="@+id/shoe_description_edit_text"
+            app:layout_constraintStart_toStartOf="@+id/shoe_description_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/shoe_brand_edit_text" />
 
         <EditText
             android:id="@+id/shoe_description_edit_text"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_extrawide"
-            android:layout_marginRight="@dimen/margin_extrawide"
+            android:layout_marginEnd="@dimen/margin_extrawide"
             android:ems="10"
             android:fontFamily="@font/comfortaa"
             android:inputType="textMultiLine|textNoSuggestions|text"
             android:text="@{shoeListViewModel.newShoe.description}"
             android:textAlignment="center"
-            />
+            app:layout_constraintBottom_toTopOf="@+id/add_shoe_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shoe_size_edit_text" />
 
-        <Button
-            android:id="@+id/add_shoe_button"
-            style="@style/button"
-            android:text="add shoe" />
+        <EditText
+            android:id="@+id/shoe_name_edit_text"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_wide"
+            android:layout_marginTop="@dimen/margin_extrawide"
+            android:ems="10"
+            android:fontFamily="@font/comfortaa"
+            android:inputType="text"
+            android:text="@{shoeListViewModel.newShoe.name}"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/shoe_brand_edit_text"
+            app:layout_constraintStart_toStartOf="@+id/shoe_brand_edit_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/shoe_description_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="@string/description"
+            android:textSize="18sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/shoe_description_edit_text"
+            app:layout_constraintEnd_toStartOf="@+id/shoe_description_edit_text"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/shoe_brand_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="@string/brand"
+            android:textSize="18sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/shoe_brand_edit_text"
+            app:layout_constraintEnd_toStartOf="@+id/shoe_brand_edit_text"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/shoe_size_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="@string/size"
+            android:textSize="18sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/shoe_size_edit_text"
+            app:layout_constraintEnd_toStartOf="@+id/shoe_size_edit_text"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/shoe_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="@string/name"
+            android:textSize="18sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/shoe_name_edit_text"
+            app:layout_constraintEnd_toStartOf="@+id/shoe_name_edit_text"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

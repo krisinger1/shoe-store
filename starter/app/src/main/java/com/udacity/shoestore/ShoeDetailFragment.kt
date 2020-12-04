@@ -28,13 +28,14 @@ class ShoeDetailFragment : Fragment() {
         // get shoe list view model to have access to data for shoes
         // make the viewModel Activity based instead of Fragment based so can be used by List as well
         viewModel= ViewModelProvider(requireActivity()).get(ShoeListViewModel::class.java)
-        Log.i("ShoeDetailFragment", "Got the viewModel")
+        Timber.i("Got the viewModel")
 
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.shoe_detail_fragment, container, false)
         binding.lifecycleOwner=this
         binding.shoeListViewModel=viewModel
 
+        binding.shoeNameEditText.requestFocus()
 
         binding.addShoeButton.setOnClickListener {
             // if a shoe has been entered, add to the list

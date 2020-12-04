@@ -22,7 +22,7 @@
         <Button
             android:id="@+id/instructions_button"
             style="@style/button"
-            android:text="View Instructions"/>
+            android:text="@string/view_instructions"/>
 
     </LinearLayout>
 </layout>

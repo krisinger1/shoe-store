@@ -6,16 +6,20 @@ import androidx.lifecycle.ViewModel
 
 class LoginViewModel : ViewModel() {
 
-    private val _loginEmail = MutableLiveData<String>()
+    private val _isLoggedIn = MutableLiveData<Boolean>()
+    val isLoggedIn : LiveData<Boolean>
+        get()= _isLoggedIn
+
+    init{
+        _isLoggedIn.value=false
+    }
 
 
-    fun onLogin(email : String, password : String){
-        //save login info
-        //navigate to Welcome screen
+    fun onLogin(){
+        _isLoggedIn.value=true
     }
 
     fun onCreateAccount(){
-        //save login info
-        //navigate to Welcome screen
+        _isLoggedIn.value=true
     }
 }
