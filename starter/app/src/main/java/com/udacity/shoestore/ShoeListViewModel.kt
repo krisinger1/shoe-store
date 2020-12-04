@@ -26,6 +26,7 @@ class ShoeListViewModel : ViewModel(){
 
     init {
         Timber.i("in init block")
+        // shoe examples from Kohls.com website
         _shoeList.value = mutableListOf(
                 Shoe("Red Boot", 5.0, "Ugg", "Victoria Mini winter boots from Koolaburra by UGG."),
                 Shoe("Ines Winter Boot", 6.0, "Croft & Barrow", "Round toe and zipper closure."),

@@ -34,15 +34,6 @@ class LoginFragment : Fragment(){
         viewModel=ViewModelProvider(this).get(LoginViewModel::class.java)
         binding.loginViewModel=viewModel
 
-
-//        binding.loginButton.setOnClickListener{
-//            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
-//        }
-//
-//        binding.newLoginButton.setOnClickListener{
-//            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
-//        }
-
         //observers
         // go to welcome screen when login clicked
         viewModel.isLoggedIn.observe(viewLifecycleOwner, Observer{ loggedIn ->
