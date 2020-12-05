@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -30,6 +31,8 @@ class ShoeDetailFragment : Fragment() {
         viewModel= ViewModelProvider(requireActivity()).get(ShoeListViewModel::class.java)
         Timber.i("Got the viewModel")
 
+        //var shoe= viewModel.newShoe.value
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.shoe_detail_fragment, container, false)
         binding.lifecycleOwner=this
@@ -41,11 +44,7 @@ class ShoeDetailFragment : Fragment() {
             // if a shoe has been entered, add to the list
             Timber.i("name is: ${binding.shoeNameEditText.text.toString()}")
             if (!binding.shoeNameEditText.text.isNullOrBlank()) {
-                viewModel.addShoeToList(
-                        binding.shoeNameEditText.text.toString(),
-                        binding.shoeSizeEditText.text.toString().toDoubleOrNull() ?: 0.0,
-                        binding.shoeBrandEditText.text.toString(),
-                        binding.shoeDescriptionEditText.text.toString())
+                viewModel.addShoeToList()
                 // then navigate back to the ShoeListFragment
                 findNavController().navigate(ShoeDetailFragmentDirections.actionAddShoeToShoeList())
 
