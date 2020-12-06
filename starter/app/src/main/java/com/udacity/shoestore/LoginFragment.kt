@@ -22,16 +22,12 @@ class LoginFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.login_fragment,
-            container,
-            false
-        )
-
-        binding.lifecycleOwner=this
         viewModel=ViewModelProvider(this).get(LoginViewModel::class.java)
+
+        // Inflate the layout for this fragment
+
+        binding = LoginFragmentBinding.inflate(inflater, container,false)
+        binding.lifecycleOwner=this
         binding.loginViewModel=viewModel
 
         //observers

@@ -31,29 +31,32 @@ class ShoeDetailFragment : Fragment() {
         viewModel= ViewModelProvider(requireActivity()).get(ShoeListViewModel::class.java)
         Timber.i("Got the viewModel")
 
-        //var shoe= viewModel.newShoe.value
-
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.shoe_detail_fragment, container, false)
-        binding.lifecycleOwner=this
-        binding.shoeListViewModel=viewModel
+        binding = ShoeDetailFragmentBinding.inflate(inflater, container, false)
 
-        binding.shoeNameEditText.requestFocus()
 
-        binding.addShoeButton.setOnClickListener {
-            // if a shoe has been entered, add to the list
-            Timber.i("name is: ${binding.shoeNameEditText.text.toString()}")
-            if (!binding.shoeNameEditText.text.isNullOrBlank()) {
-                viewModel.addShoeToList()
-                // then navigate back to the ShoeListFragment
-                findNavController().navigate(ShoeDetailFragmentDirections.actionAddShoeToShoeList())
+        with(binding){
+            lifecycleOwner=this@ShoeDetailFragment
+            shoeListViewModel=viewModel
 
-                //hide the keyboard
-                val imm= context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(view?.windowToken,0)
-            }
-            else {
-                Toast.makeText(context, "PLease enter a shoe name", Toast.LENGTH_SHORT).show()
+            shoeNameEditText.requestFocus()
+
+            addShoeButton.setOnClickListener {
+                // if a shoe has been entered, add to the list
+                Timber.i("name is: ${binding.shoeNameEditText.text.toString()}")
+                if (!binding.shoeNameEditText.text.isNullOrBlank()) {
+                    viewModel.addShoeToList()
+                    // then navigate back to the ShoeListFragment
+                    findNavController().navigate(ShoeDetailFragmentDirections.actionAddShoeToShoeList())
+
+                    //hide the keyboard
+                    val imm= context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(view?.windowToken,0)
+                }
+                else {
+                    Toast.makeText(context, "PLease enter a shoe name", Toast.LENGTH_SHORT).show()
+
+                }
 
             }
 

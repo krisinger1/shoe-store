@@ -28,22 +28,17 @@ class ShoeListFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         // Inflate the layout for this fragment
-
-        binding = DataBindingUtil.inflate(
-                inflater,
-                R.layout.shoe_list_fragment,
-                container,
-                false
-        )
+        binding = ShoeListFragmentBinding.inflate(inflater, container,false)
 
         // get the viewModel
         // make viewModel Activity based so detail fragment can use as well
         viewModel= ViewModelProvider(requireActivity()).get(ShoeListViewModel::class.java)
         Timber.i("got the viewModel")
 
-
-        binding.shoeListViewModel=viewModel
-        binding.lifecycleOwner=this
+        with(binding) {
+            shoeListViewModel = viewModel
+            lifecycleOwner = this@ShoeListFragment
+        }
 
         //observers
         // go to detail screen when button clicked
@@ -55,8 +50,9 @@ class ShoeListFragment : Fragment() {
         viewModel.shoeList.observe(viewLifecycleOwner, Observer{list->
             updateShoeList(inflater, list)
         })
-        setHasOptionsMenu(true)
 
+        // this layout has overflow menu
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -75,10 +71,12 @@ class ShoeListFragment : Fragment() {
             binding.shoeListLinearLayout,
             false
         )
-        itemBinding.shoeBrandText.text = shoe.company
-        itemBinding.shoeDescriptionText.text = shoe.description
-        itemBinding.shoeNameText.text = shoe.name
-        itemBinding.shoeSizeText.text = "Size: ${shoe.size}"
+        with(itemBinding) {
+            shoeBrandText.text = shoe.company
+            shoeDescriptionText.text = shoe.description
+            shoeNameText.text = shoe.name
+            shoeSizeText.text = "Size: ${shoe.size}"
+        }
         return itemBinding.root
     }
 

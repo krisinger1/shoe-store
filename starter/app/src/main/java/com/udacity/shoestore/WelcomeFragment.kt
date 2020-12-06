@@ -22,12 +22,7 @@ class WelcomeFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.welcome_fragment,
-            container,
-            false
-        )
+        binding = WelcomeFragmentBinding.inflate(inflater, container, false)
 
         binding.instructionsButton.setOnClickListener {
             findNavController().navigate(WelcomeFragmentDirections.actionWelcomeToInstructions())
@@ -35,7 +30,5 @@ class WelcomeFragment : Fragment() {
 
         return binding.root
     }
-
-
 
 }
