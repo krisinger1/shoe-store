@@ -44,6 +44,8 @@ class LoginFragment : Fragment(){
     }
 
     private fun goToWelcome(){
-        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+        findNavController().navigate(LoginFragmentDirections.actionLoginToWelcome())
+        viewModel.onLoginDone()
+
     }
 }

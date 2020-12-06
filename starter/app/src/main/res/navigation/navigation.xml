@@ -3,27 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/login_destination">
+    app:startDestination="@id/login_fragment">
 
-    <fragment
-        android:id="@+id/login_destination"
-        android:name="com.udacity.shoestore.LoginFragment"
-        android:label="Shoe Store Login">
-        <action
-            android:id="@+id/action_login_fragment_to_welcomeFragment"
-            app:destination="@id/welcome_destination"
-            app:popUpToInclusive="false" />
-    </fragment>
     <fragment
         android:id="@+id/welcome_destination"
         android:name="com.udacity.shoestore.WelcomeFragment"
-        android:label="Welcome"
-        tools:layout="@layout/welcome_fragment" >
+        android:label="Welcome">
         <action
             android:id="@+id/action_welcome_to_instructions"
             app:destination="@id/instructions_destination"
-            app:popUpTo="@id/login_destination"
-            app:popUpToInclusive="false" />
+            app:popUpTo="@id/login_fragment" />
     </fragment>
     <fragment
         android:id="@+id/instructions_destination"
@@ -33,8 +22,7 @@
         <action
             android:id="@+id/action_instructions_to_shoe_list"
             app:destination="@id/shoe_list_destination"
-            app:popUpTo="@id/login_destination"
-            app:popUpToInclusive="false" />
+            app:popUpTo="@id/login_fragment" />
     </fragment>
     <fragment
         android:id="@+id/shoe_list_destination"
@@ -55,5 +43,14 @@
             android:id="@+id/action_add_shoe_to_shoe_list"
             app:destination="@id/shoe_list_destination"
             app:popUpTo="@id/shoe_list_destination" />
+    </fragment>
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.udacity.shoestore.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_login_to_welcome"
+            app:destination="@id/welcome_destination" />
     </fragment>
 </navigation>

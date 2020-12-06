@@ -22,4 +22,8 @@ class LoginViewModel : ViewModel() {
     fun onCreateAccount(){
         _isLoggedIn.value=true
     }
+
+    fun onLoginDone(){
+        _isLoggedIn.value=false
+    }
 }
