@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
                 //setContentView(R.layout.activity_main)
                 Timber.plant(Timber.DebugTree())
                 val navController = findNavController(R.id.nav_host_fragment)
-                val appBarConfiguration = AppBarConfiguration(navController.graph)
+                //val appBarConfiguration = AppBarConfiguration(navController.graph)
                 // set up so onboarding screens don't have up button
-                //val appBarConfiguration = AppBarConfiguration(setOf(R.id.login_destination,R.id.welcome_destination, R.id.instructions_destination, R.id.shoe_list_destination))
+                val appBarConfiguration = AppBarConfiguration(setOf(R.id.login_fragment,R.id.welcome_destination, R.id.instructions_destination, R.id.shoe_list_destination))
                 //findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, appBarConfiguration)
 
                 toolbar.setupWithNavController(navController, appBarConfiguration)

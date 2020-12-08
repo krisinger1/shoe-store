@@ -54,6 +54,13 @@ class ShoeListViewModel : ViewModel(){
     fun addShoeToList(){
         Timber.i("shoe values:  ${shoeName.value} ${shoeBrand.value} ${shoeSize.value} ${shoeDescription.value}")
         // add shoe to list
-        _shoeList.value?.add(Shoe(shoeName.value!!,shoeSize.value!!.toDouble(), shoeBrand.value!!, shoeDescription.value!!))
+        _shoeList.value?.add(Shoe(shoeName.value?:"",
+                when (shoeSize.value) {
+                    null -> 0.0
+                    else -> shoeSize.value!!.toDouble()
+                } ,
+                shoeBrand.value?:"",
+                shoeDescription.value?:"")
+        )
     }
 }

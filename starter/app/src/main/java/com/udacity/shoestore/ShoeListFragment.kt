@@ -7,6 +7,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -92,6 +93,8 @@ class ShoeListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //pop back stack so can't go back after logging out
+        findNavController().popBackStack(R.id.shoe_list_destination,true)
         return NavigationUI.onNavDestinationSelected(item,findNavController()) || super.onOptionsItemSelected(item)
     }
 
